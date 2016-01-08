@@ -1,0 +1,353 @@
+{% extends "base.html" %}
+
+<!-- Stage notes   -->
+
+{% set stage_notes = [['Stage 1: Intro To Programming',[['Lesson 1 - Getting Started with HTML',[['Basics of the Web', '''<ul>
+                        <li> - the web </li>
+                        <li> - html</li>
+                        <li> - urls</li>
+                        <li> - http </li>
+                        <li> - web applications</li>  
+                        <li> - The World Wide web - <em>collection of html pages</em></li>
+                    </ul>'''],['Major pieces', '<ul>
+						<li>- You</li>
+						<li>- Your computer and browser</li>
+						<li>- The internet</li>
+						<li>- http - protocol on the internet</li>
+						<li>- Servers</li>
+					</ul>'], 
+        ['HTML Makeup', '<ul class="main-point-info">
+						<li> - Text content</li>
+						<li> - Markup - look of text</li>
+						<li> - References to other documents</li>
+						<li> - Links to other pages</li>
+					</ul>'],['Markup', '<ul>
+						<li> - how changes to the text formatting is made</li>
+						<li>- <b>Bold</b> &lt;b&gt; &lt;/b&gt;</li>
+						<li>- <em>Italics</em> &lt;em&gt; &lt;/em&gt;</li>
+						<li>HTLM Attributes formatting:</li>
+						<li>&lt;tag ATTR="value"&gt; contents &lt;/tag&gt;</li>
+						<li>&lt;a href="www.reddit.com"&gt;derp&lt;/a&gt;</li>
+						<li><a href="http://www.reddit.com" target="_blank">derp</a> -- example hyperlink</li>
+					</ul>'],['Images', '<ul>
+						<li>&lt;img&gt; - images</li>
+						<li>&lt;img src="url" alt="text"&gt;  - void tag..</li>
+						<li>- No content or closing tag</li>
+					</ul><div class="hipmunk">
+						<img src="http://www.udacity.com/cs253x/hipmunk.png" alt="hipmunk!">
+					</div>'],['Whitespace', '<ul>
+						<li>- blank lines... Can be created with break or paragraph</li>
+						<li>&lt;br&gt; break ... example of a Void tag</li>
+						<li>&lt;p&gt; content &lt;/p&gt;  paragraph	</li>
+					</ul>'],['Inline/block', '<ul>	
+						<li>&lt;br&gt; - inline</li>
+						<li>&lt;p&gt;text&lt;/p&gt; - block - creates a box around the text</li>
+						<li>- Can have special formatting assigned</li>
+					</ul>'],['HTML Document', '<ul>
+						<li>Important elements of HTML pages include:</li>
+						<li>- Doctype  &lt;Html&gt; &lt;/html&gt;</li>
+						<li>- Header &lt;Head&gt;  &lt;/head&gt;</li>
+						<li>- Body &lt;Body&gt; &lt;/body&gt;</li>
+					</ul>']]],['Lesson 2 - Webpages, Documents and Structure',[['Webpage Makeup', '<ul>
+						<li>HTML - framework</li>
+						<li>CSS - style</li>
+						<li>Java script files- interactive</li>
+					</ul>'],['Structure', 
+        'Each page is made up of boxes which are nested within other boxes.  This creates a tree like structure, where there are multiple branches, and each branch has more branches.
+					<br>The HTML file is written in a way showing this structure.  This is called "DOM" (Document Object Model).  This makes it easy to see the  hierarchy of each element.'], ['Tools', '<ul>
+						<li>Tools for editing and reading HTML and CSS</li>
+						<li>-	Google Chrome Developer Tools</li>
+						<li>-	<a href="http://scratchpad.io/" target="_blank">Scratchpad.io</a>  - very basic, good for beginners, only HTML and CSS supported</li>
+						<li>-	<a href="http://codepen.io/" target="_blank">CodePen</a> - higher quality, not as many beginner level features, HTML, CSS and Java</li>
+						<li>-	<a href="http://www.sublimetext.com/" target="_blank">Sublime</a> - hightest quality, not as easy for beginners, all languages supported</li>
+					</ul>'],['Goals', '<ul>
+						<li>Move from Ignorance to Awareness, then to Ability and eventually Fluency.</li>
+						<li>Goal is to be able to see a website and know what the code looks like.</li>
+						<li>As well as see the code and know what the website will look like.</li>
+					</ul>']]], ['Lesson 3 - Adding Style with CSS',[['Styles', '<p>Style are Cascading, most specific setting will apply. </p>
+					<p>Styles are used to assign formatting to specific elements... H1, p, class etc... They are used to reduce repetition. 
+					<br>For example: Once a class type has been assigned formatting in the css file then all elements with that same class will be formatted the same, without having to repeat the formatting information over and over.</p>
+					<br>This reduces errors in inconsistent formatting, and also makes it easy to update the formatting for the page.'],['Using Styles', 
+        '<ul>
+						<li>Style can be added 2 ways:</li>
+						<li>With a link tag with the address for the style file:</li>
+						<li>&lt;link rel="stylesheet" type="text/css" href="style.css"&gt;</li>
+						<li></li>
+						<li>Or with a style tag within the HTML page:</li>
+						<li>&lt;style&gt;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     .description { </li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          color : red; </li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     }</li>
+						<li>&lt;/style&gt;</li>
+					</ul>'], ['Tips for coding a website', '<ul>
+						<li>Code-test-refine</li>
+						<li>Look for natural boxes</li>
+						<li>Look for repeated styles and semantic elements and use css to reduce repetition</li>
+						<li>Apply styles from biggest to smallest</li>
+						<li>Fix things</li>
+						<li><a href="http://validator.w3.org/#validate_by_input" target="_blank">HTML Validation</a> test</li>
+						<li><a href="http://jigsaw.w3.org/css-validator/#validate_by_input" target="_blank">CSS Validation</a> test</li>
+					</ul>']]]]],
+
+        ['Stage 2: Telling Computers What to Do',[['Lesson 1 - Introduction to "Serious" Programming',[['Programming Languages', '<p><em><b>Programming languages</b></em> are how we tell a computer what to do.  Computers wouldn&#39t be able to do anything without a program telling it what to do.  There are many computer languages that can be used.  One example is <em>Python</em>.</p>
+'],['Program', 
+        '<p>A computer <b><em>program</em></b> is a specific sequence of instructions that tell a computer what to do.  Programs can be written to perform many functions, web browser, games, apps etc...</p>
+					<p>Computer programs use <b><em>expressions</em></b> to formulate their results.  Expressions are the instructions the program uses and must follow the rules of grammar for the programming language.</p>
+'], ['Grammar', '<p>Each computer program has a specific <b><em>grammar</em></b> that must be followed.  Natural languages can be very ambigous and verbose.  One phrase or sentence could be interpreted by different people to mean different things.  However, computer programs must have one specific interpretation so that every computer will have the same result every time.    
+']]], ['Lesson 2 - Variables and Strings',[['Variables', '<p><em><b>Variables</b></em> are a way to give a name to a value within the program.  Variables could be assigned a value that is text, a number, a mathematical formula or even the output of a function within the program. </p>'],['Assign Value to a Variable', 
+        '<p>You can assign a value to a variable simply by using the = sign.  Example, Name = "" which is a string, or Age = 41 which is a numerical value</p>
+					<p>In a normal equation like 2 + 3 = 5 the equal sign indicates that the value of the expression on the left side of the = is the same as the value on the right.  When assigning a value to a variable the equal sign indicates that the variable name on the left side is being assigned the value that is on the right.</p>'], ['The Difference Between Strings and Numbers', '<p>In Python a 2 could be either a string or a number.  In the expression "2" + "2" the program would interpret the 2&#39s as strings or as text and the output would actually be the concatenation of the 2&#39s, resulting in the output of "22".
+					</p>
+					<p>If the expression was 2 + 2 then the 2&#39s would be treated as numbers and the result would be the mathematical operation of adding the 2&#39s together resulting in an output of 4.</p>']]],['Lesson 3 - Input -> Function -> Output',[['What is a Function', '<p>In a program a <b><em>Function</em></b> is something that takes an input and performs actions with that input and produces an output.  Functions can be used to perform a specific task and be called by the program multiple times using unique inputs.</p>'],['Defining and Using a Function in Python', 
+        '<p>A funcion is <b><em>Defined</em></b> by using a def followed by the parameters in parenthesis.  The next lines in the function will be the actions that the function performs using the parameters.  The last line of the function will be a return statement with the value to be returned.</p>
+					<p>A function is called by using the name of the function along with the values we want to pass to it in parenthesis. </p>'], ['How Do Functions Help in Programming', '<p>Once a function has been defined it can be called over and over.  This aids the programmer by reducing repetition.  If there is an action that will need to be performed multiple times, then a function could be written once and then be used every time it is needed without having to repeat the code again.</p>']]],['Lesson 4 - Control Flow and Loops : If and While',[['If Statements', '<p><em><b>If Statements</b></em> can be used to perform a function depending on if an expression is true or false.  If an if statement is used by itself then it will perform a function if the test expression is true and do nothing if it is false.  You can also add an else statement that will be performed if the statement was false.  </p>'],['While Loops', 
+        '<p><b><em>While Loops</em></b> will evaluate a test expression and as long as the result is True then it will execute the code within the loop.  It will then return to the test expression and evaluate it again.  It is important that the test expression will eventually be a true statement so that the loop will end.   </p>
+					<br>Example below:
+					<br>
+					<div class="code">
+						list = [1 ,2, 3]
+						<br>while i &lt; len(list):
+						<br>&nbsp;&nbsp;&nbsp;&nbsp;print list[i]
+						<br>&nbsp;&nbsp;&nbsp;&nbsp;i = i + 1
+					</div>
+					<br>The code above would assign i the value of the first element in the list and loop through the list one element at a time until the end of the list.  The example output would be:
+					<div class="code">
+						1
+						<br>2
+						<br>3 
+					</div>'], ['Debugging', '<p>No one writes perfect code all the time.  When a piece of code is resulting in an error or not returning the desired value, the problem can be found by <b><em>debugging</em></b> the code.  This could include inserting extra print statements to dispay the value of variables at critical points of the code.  
+					</p>']]],['Lesson 5 - Structured Data : Lists and For Loops',[['Strings and Lists', '<p><em><b>Strings and Lists</b></em> are two different ways to store data and both are examples of structured data.  They are considred to be structured data because they can be broken down into their individual components.  For instance a string could be assigned the value of &#39hello&#39 (ex a = &#39hello&#39)and a list could be assigned the value of [&#39h&#39,&#39e&#39,&#39l&#39,&#39l&#39,&#39o&#39], (ex b = [&#39h&#39,&#39e&#39,&#39l&#39,&#39l&#39,&#39o&#39])</p>
+					<p>One difference between strings and lists is that lists can be a list of any type, strings, numbers, characters, or even other lists.  </p>
+'],['Mutation and Aliasing', 
+        '<p><b><em>Mutation</em></b> refers to the ability to change the value of a list after it has been created.  If any element of a list is changed, the every variable that was assigned that list, or any specific element of the list, will be updated.</p>
+					<p><b><em>Aliasing</em></b> refers to two variables being assigned the same object. With Lists if two variables are assigned to the same list and an operation is performed on one variable that changes its value, then the value of the other variable is updated as well.</p>'], ['For Loops', '<b><em>For Loops</em></b> can be used to loop through each element in a list.  
+					<br>Example below:
+					<br>
+					<div class="code">
+						list = [1 ,2, 3]
+						<br>for i in list:
+						<br>&nbsp;&nbsp;&nbsp;&nbsp;print i
+					</div>
+					<br>The code above would assign i the value of the first element in the list and loop through the list one element at a time until the end of the list.  The example output would be:
+					<div class="code">
+						1
+						<br>2
+						<br>3 
+					</div>']]]]],
+
+		['Stage 3: Program With Objects',[['Object Oriented Programming Overview',[['What is Object Oriented Programming?', '<p>Object Oriented Programming is based on objects.  A simple program can be written in a series of instructions that are followed from A to Z.  As the program becomes more complicated it becomes increasingly difficult to maintain/update and harder to understand.  In OOP objects are the focus.  The program manipulates the objects to provide the desired output.</p>  
+
+					<p>A class is a definition of an object, including all of the attributes and functions that are defined for the object.  Instead of defining multiple variables which are of a similar type independently and writing the same code over and over, using OOP the class is defined one time and then the objects are instances of the class which operate independently.  Without using OOP if we wanted to write a program for the inventory of a candy store we would need a separate function for each type of candy as well as unique variables for each attribute for each type of candy.  However, using OOP we could create a class called candy.  Within the class the attributes and methods would be assigned, including variables that could define the price, weight, calories, amount of inventory etc.  The class would also include methods which would be able to be called by the instances, for example to recalculate the inventory after a purchase or receiving a new shipment.  Each type of candy would be defined as an instance of the class and inherit the attributes and methods.  Each instance would be independently assigned its own values of price, weight and amount of inventory.  Other types of inventory that the store sells, like drinks or gift boxes, could each have their own class. </p>
+
+					<p>Using OOP prevents repetitive programming of multiple variables with the same attributes.  In the example of a candy store with hundreds of types of candy this would make the programming much simpler by reducing repetition.  This also makes it easier to update the program later on if you wanted to change the attributes or methods for the class. </p>
+
+					<p>Two important aspects of using OOP are to reduce repetition and simplify the structure of the program.</p>'],['Main Concepts in OOP', '<li>Class = like a blueprint or a generic description.  Contains information about the class, including variables and methods.</li>
+					<li>Instance = an object whose type is of some class, interchangeable with object.</li>
+					<li>Object = a specific instance of a class. </li>
+					<li>Method = a function that is defined inside a class definition and is invoked on instances of that class.</li>
+					<li>Module = a file containing Python definitions and statements.</li>
+					<li>Attribute = variables and methods that make up a class.</li>
+					<li>Library = a collection of modules of code that can be imported and then used by a program.</li>
+					<li>Class Variables = a variable that is constant between all instances of the class.  If the variable is changed it changes for all instances that use the class variable.</li>
+					<li>Inheritance = A child class can be created using a pre-existing parent class.  The child class will inherit the methods of the parent class, in addition to new methods only applied to the child class.</li>
+					<li>Method overriding = A child class will inherit the method of the parent class.  However, it can be overridden by defining the same method for the child class.</li>'], 
+        ['Connections between OOP and HTML/CSS', '<p>The way classes work in Python is similar to the way class definitions work in HTML and CSS.  In an HTML document if you want a certain structure with similar items formatted the same way then instead of redefining the formatting over and over you can create a class within the CSS file that defines all of the parameters once and then call it whenever it needs to be applied.  Multiple types of classes can be defined within the CSS file representing all the different formatting styles you are using within the HTML document.  In the HTML coding there will be a link tag that references the style sheet you are using for that page, which is similar to importing a module in python for a specific function you want to use.  The HTML code is simplified by reducing repetition and any change needed to the formatting of the page can be done very easily by updating the CSS document which are also some of the benefits you gain through using OOP.</p>
+
+					<p>Additionally, in the same way that class definitions in Python have inheritance, there is also inheritance with the styles in the HTML file.  A child element will inherit the properties of the parent.  Similar to method overriding in Python, style elements in CSS can also be overridden if a property that is defined for the parent is also defined for the child.  The formatting for the child element will be a combination of the inherited values from the parent as well as the style defined specifically for the child. 
+					</p>']]]]],
+
+        ['Stage 4:  Allow Comments',[['Servers, Validation and Templates',[['Servers', '<p>The purpose of a server is to respond to http requests.  There are two types of responses, static and dynamic.  An example of a static response would be when your browser requests an image.  The image resides on the server and when you request it, the server simply returns the image over the internet to the web browser on your computer.  Dynamic responses are when the page you are requesting is assembled on the server based on the parameters it receives.  Almost all websites today are dynamic.  They are generated on the fly by web applications. </p> 
+<p>
+Parameters can be passed to the server by using 2 types of requests, get and post.  The following are the differences between the two types of requests
+</p>
+<ol>
+Get Request
+<li>parameters in URL</li>
+<li>Used for fetching documents</li>
+<li>Limited to Maximum URL length</li>
+<li>Ok to cache</li>
+<li>Shouldn’t change the server</li></ol>
+<ol>
+Post Request
+<li>parameters in body</li>
+<li>Used for updating data</li>
+<li>No maximum length... Defined by server</li>
+<li>Not ok to cache</li>
+<li>Ok to change the server</li></ol>
+<p>
+Get requests would be used to select what you are wanting to receive from the server.  For example it may include information about the page you are on, or what document you are wanting to download. The server will be able to retrieve the values of the get parameters and use that information to generate the web page.   Post requests are used to update the data on the server.  For example submitting information to the server like a post to the comment section on a website..  The server will take the information in the post parameter and update the server accordingly.</p>'],
+
+['The Importance of Validating Input', '<p>Validation refers to verifying on the server side that what we received is what we expected to receive.
+When processing information submitted by users it&#39s possible that someone could send invalid information which could cause problems with our page.</p>
+
+<p>One solution is to use dropdown boxes with the valid inputs so the user is limited to a specific set of values.  Another solution is to validate the data entered against a pre-determined list of valid inputs.  For example if you were asking for a date to be entered you could compare the month entered against a list containing the months of the year.  If someone entered anything else it would fail validation.</p>
+
+<p>Another issue that can happen is if a user submits text to a form and the text has html code in it.  When the website displays the data the user entered, instead of showing the text of the html code, it could be interpreted as html and allow the user to change the appearance or content of the site.</p>
+
+<p>The way to prevent this is to escape the input.  Escaping will replace the characters used in html with a string that will be rendered on the page as the html character.  <br>
+	For example:<br><ol>
+	<li>&lt; will be replaced with &amp;lt;</li>
+	<li>&quot; will be replaced with &amp;quot;</li>
+	<li>&amp; will be replaced with &amp;amp;</li></ol>
+	The browser will replace the strings with the character it represents, so on the page it will look like html, but the browser will not treat it as if it was html.</p>
+	<p>If a user submitted &lt;b&gt;"Hello World!"&lt;/b&gt; and it was escaped, in the HTML it would appear as: <br>&amp;lt;b&amp;gt;"Hello World!"&amp;lt;/b&amp;gt;</p><p>
+But in the browser would appear just the way the user typed it.  The bold tags would be ignored because it isn&#39t in actual html format.</p>'], 
+
+
+['HTML Templates and Abstraction', '<p>Templates allow you to avoid repetition and make complex applications much more easily.  There are many template libraries available.  One useful template library is jinja2, which is built into Google App Engine.
+A template library is a library used to build complicated strings.  The strings that are generated can be html.  Templates allow the web pages to be generated dynamically instead of having multiple static pages.  Repetition is limited by reducing the amount of coding that needs to be done.  When a change needs to be made to the page there will be fewer lines of code needing to be updated.</p>
+
+<p>One way templates reduce repetition is through inheritance.  If there are multiple pages on a website that will share the same structure or content on all pages, you can create a base page that all other other pages will inherit from.  All html that is shared will be included in the base page.  Jinja2 syntax will be included on the base page mark the area where content will be inserted from the sub-pages.  Also, jinja2 syntax will be included on the sub pages defining the content to be inserted.</p>
+
+<p>The benefits of templates include:<ol>
+<li>Allow you to separate different types of code.  Python code can be kept separate from html.</li>
+<li>Make more readable code</li>
+<li>More secure websites by using built in auto-escaping features of the templates</li>
+<li>html that is easier to modify</li></ol></p>']]]]], 
+
+['Stage 5: Explore - JavaScript and jQuery',[['JavaScript and jQuery',[['JavaScript', 
+'<p>The two main tools used when developing a website using JavaScript are a text editor to code and a browser to inspect our work.  All modern browsers include developer tools which includes a console that allows the user to enter java commands and see errors on the page.</p>
+<p>The syntax for assigning variables in JavaScript is:</p>
+<div class=”codestage5”>
+var {varible name} = {value};</div>
+
+<p>The concept of true and false in JavaScript can be confusing.  In JavaScript there are values that can evaluate to true or false, without actually being true or false.  The values are referred to as truthy or falsy.  Truthy can include true, non-zero numbers, strings, objects, arrays and functions.  Falsy can include false, 0, &ldquo;&rdquo;, undefined, null and NaN.  Two links that I found useful in explaining this more were: <a class="linkintext" href="http://opensourcehacker.com/2012/10/17/true-lies-and-falsy-values-in-python-and-javascript/">http://opensourcehacker.com/2012/10/17/true-lies-and-falsy-values-in-python-and-javascript/</a>
+and <a class="linkintext" href="http://www.sitepoint.com/javascript-truthy-falsy/">http://www.sitepoint.com/javascript-truthy-falsy/</a></p>
+
+<p>There are 3 ways to assign values.  If you wanted to assign an array with an indexes for &ldquo;name&rdquo; and &ldquo;age&rdquo; and the associated values, it could be done in the 3 ways below:</p>
+
+Object literal notation: <br>
+var bio = {&ldquo;name&rdquo; : &ldquo;Brad&rdquo;, &ldquo;age&rdquo; : 42};<br><br>
+Dot notation: <br>
+bio.name = &ldquo;Brad&rdquo;;<br>
+bio.age = 42;<br><br>
+Bracket notation:<br>
+bio[&ldquo;name&rdquo;] = &ldquo;Brad&rdquo;;<br>
+bio[&ldquo;age&rdquo;] = 42;<br>
+<p>Dot and bracket notation don&rsquo;t need a preceding &ldquo;var&rdquo; because they are not declaring a new variable, but are appending new properties to an existing object.</p>
+
+<p>JavaScript, like other programming languages, also has if statements and loops (for, for in, and while).  Also, for cleaner code, functions can be assigned to process the inputs and return data.</p>
+<p>While learning more about JavaScript syntax I used <a class="linkintext" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">this link</a> to explore and see examples.  Here is a summary of the site:</p><ol>
+<li>There is a tutorial section of the website with topics in 3 categories introductory, intermediate and advanced.  There are many examples in the tutorials making it easy to apply what you are learning and try it out for yourself.</li>
+<li>A 4th section of the tutorials is a JavaScript Guide: <a class="linkintext" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide</a>.  The guide is broken into chapters that cover every aspect of the language.  It is easy to look up any topic, (ex: strings, functions, date and time) and learn more about it with examples as well.</li>
+<li>The references section lists each function separately and gives examples on the proper syntax, description and examples: <a class="linkintext" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference</a></li>
+<li>The Tools and Resources section list many links to useful sites and programs that will aid in developing code.  Text editors, collaborations tools and shells are some of the items available.</li>
+<li>There is also a documentation section which includes lists of Properties or Methods in alphabetical order.</li>
+</ol>
+'],
+
+
+['jQuery', '<p>jQuery is a JavaScript library that can be used to manipulate the DOM of websites.  The DOM of a website can be represented like a tree, similar to a family tree.  There are Parents at the top, nested inside the parent element are the children.  Elements on the same level are siblings. </p>
+
+<p>jQuery can be used to manipulate elements on websites by referencing specific tags, classes, id&rsquo;s or even specific text to modify data by appending, replacing, inserting, modifying etc..  For instance: If you wanted to insert some HTML code within an specific div on a website you could use the .append() function.  If a div had an id=&rdquo;abc123&rdquo; you could use $(&ldquo;#abc123&rdquo;).append(xxxxx); where xxxxx could be a variable representing the data you wanted to append.  The variable could be a string of text, or even a string of HTML code that would be inserted and then interpreted by the browser. </p>
+
+<p>There are many functions in jQuery.  </p>
+
+
+<p>An example of using jQuery from my Resume website is below:</p>
+
+<p>There are variables that contain HTML code that will be modified and appended to the resume website.  HTMLskillsStart will display the header for the Skills section.  It has an id=&rdquo;skills&rdquo; that will be used to key off of when appending the individual skills.
+The variables containing the HTML code are defined first.  Notice that HTMLskills has %data% which is just a placeholder.  We will use the .replace() function to replace that string with the text we want to display on the website:</p>
+
+<div class="codestage5">var HTMLskillsStart = &#39;&lt;h3 id=&quot;skills-h3&quot;&gt;Skills at a Glance:&lt;/h3&gt;&lt;ul id=&quot;skills&quot; class=&quot;flex-box&quot;&gt;&lt;/ul&gt;&#39;;<br>
+var HTMLskills = &#39;&lt;li class=&quot;flex-item&quot;&gt;&lt;span class=&quot;white-text&quot;&gt;%data%&lt;/span&gt;&lt;/li&gt;&#39;;
+
+$(&quot;#header&quot;).append(HTMLskillsStart);</div>
+ -- this code looks for the id=&rdquo;header&rdquo; on the existing website and appends the code in HTMLskillsStart
+ 
+<div class="codestage5">var formattedSkills = HTMLskills.replace(&quot;%data%&quot;, bio.skills[skill]);</div> -- this line looks in variable HTMLskills and replaces &lsquo;%data%&rsquo; with a specific skill from the list of skills stored in bio.skills and assigns that new HTML code to variable formattedSkills. 
+
+<div class="codestage5">$(&quot;#skills&quot;).append(formattedSkills);</div>  -- this line appends the HTML code in formattedskills after the id=&rdquo;skills&rdquo; which was in HTMLskillsStart that was appended earlier.
+
+<p>The original HTML looked like this:</p>
+<div class="codestage5">&lt;div id=&quot;header&quot; class=&quot;center-content clear-fix&quot;&gt;<br>
+&lt;/div&gt;</div>
+
+Once the javascript runs it would look like this:<br>
+<div class="codestage5">
+&lt;div id=&quot;header&quot; class=&quot;center-content clear-fix&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;h3 id=&quot;skills-h3&quot;&gt;Skills at a Glance:&lt;/h3&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;ul id=&quot;skills&quot; class=&quot;flex-box&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;li class=&quot;flex-item&quot;&gt;&lt;span  class=&quot;white-text&quot;&gt;Skill # 1&lt;/span&gt;&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/ul&gt;<br>
+&lt;/div&gt;</div>
+
+<p>A useful resource that I used to learn more about jQuery was: <a class="linkintext" href="https://jquery.org/projects/">https://jquery.org/projects/</a>.  This site has links to several other related sites with in depth information about different aspects of jQuery.  Here is a summary of the resources accessible from this site:</p>  
+
+<ol>
+<li><a class="linkintext" href="https://jquery.org/projects/">https://jquery.org/projects/</a> lists all of the projects that the jQuery foundation supports including <a class="linkintext" href="http://api.jquery.com">api.jquery.com</a>, <a class="linkintext" href="http://api.jqueryui.com">api.jqueryui.com</a>, <a class="linkintext" href="http://api.jquerymobile.com">api.jquerymobile.com</a>, and <a class="linkintext" href="http://learn.jquery.com">learn.jquery.com</a>.  These websites have a lot of information, documentation and examples of jQuery.</li>
+<li>The <a class="linkintext" href="http://api.jquery.com/">jQuery API</a> site lists everything available in jQuery core with descriptions, examples and demos of each one.</li>
+<li>The <a class="linkintext" href="http://api.jqueryui.com/">jQuery User Interface</a> documentation site contains info regarding all of the user interface interactions, effects, widgets, and themes available using jQuery.  There is also a Demo section that allows you to see the UI&#39;s in action and all of the available options as well as view the source code. </li>
+<li>There is also a <a class="linkintext" href="http://api.jquerymobile.com/">jQuery Mobile</a> documentation available as well.   This site has documentation, examples and demos of jQuery Mobile which is used to buiild sites and apps to be accessible on smartphones and tablets.</li>
+<li>The <a class="linkintext" href="http://learn.jquery.com/">Learning Center</a> site has chapters covering many topics. Each topic has descritpions and examples allowing you to learn about all aspects of jQuery.  </li>
+<li>Each of these sites are easily searchable to find information about any function, method, event handlers etc.  Each entry is clearly laid out with proper syntax and descriptions.  The demo sites on the jQuery UI and jQuery Mobile sites allow you to see capabilities of the code in action as well as all of the options available and the source code for the demo.  It is interesting to me to see how easy it is to incorporate the elements from the jQuery library in a website to make it more appealing, interactive and user friendly.</li>
+</ol>
+
+'], 
+
+        ['Stage 5 Project', '<p>In the JavaScript course the project was to build a resume website.  I have completed that project and the link is below.</p>
+        <a class="link" href="/resume">Resume JavaScript Project</a>']]]]],
+
+
+
+
+] %}
+
+
+<!-- creating index value for the list.  Index number is stage number minus 1 -->
+{% set stage_index=stage - 1%}
+
+{% set stage_content = stage_notes[stage_index] %}
+<!-- initializing counter to make two columns of notes   -->
+{% set columns=0 %}
+
+
+{%block notes%}
+				<br>
+				<h1>{{stage_content[0]}}</h1>
+<!-- loops used for generating stage page content   -->
+		
+		{% for lesson in stage_content[1] %}
+		<div class="lessons">	
+				<h2>{{ lesson[0] }}</h2>
+				<div class="columns">
+					{% for main_point in lesson[1] %}
+						<div class="main-points-box">
+							<div class="main-point-title">
+								{{main_point[0]}}
+							</div>
+							<div class="main-point-info">
+								{{main_point[1]|safe}}
+							</div>
+						</div>
+						{% set columns = columns + 1 %}
+						{% if columns % 2 == 0 %}
+							</div>
+							<div class="columns">
+						{% endif %}
+					{% endfor %}
+				</div>	
+		</div>	
+		{% endfor %}
+
+	<hr>
+	<br>
+
+	<!-- comment submission form -->
+	<h3>Please leave a comment about Stage {{stage}} below!</h3>
+<form action="{{'/signstage?' + sign_query_params + '&stage=' + stage|string + '#comments'}}" method="post">
+      <div><textarea name="content" placeholder="{{error}}" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Submit"></div>
+    </form>
+    <br>
+    
+<!--  link for logging in/out  -->
+
+    <a href={{url}}>{{url_linktext}}</a>  
+    <br>  
+    <br>
+
+
+
+	{%endblock%}
+

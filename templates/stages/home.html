@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{%block notes%}
+<!-- Home page content   -->
+<h1>Click a link above to learn about the lessons in this course!</h1>
+<br>
+<hr>
+<h3>Please leave a comment about Introduction to Programming below!</h3>
+
+<!-- comment submission form -->
+<form action="{{'/sign?' + sign_query_params + '#comments'}}" method="post">
+      <div><textarea name="content" placeholder="{{error}}" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Submit"></div>
+    </form>
+    
+
+<!-- link for logging in/out of comments  -->
+    <a href={{url}}>{{url_linktext}}</a>  
+    <br>  
+    <br>
+
+
+
+
+{%endblock%}

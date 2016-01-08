@@ -1,0 +1,219 @@
+*{
+  font-family:Georgia;
+  color: white;
+}
+
+.header{
+  text-align:center;
+  padding:10px;
+  margin:30px auto;
+  border: 5px solid black;
+  border-radius:20px;
+  width:80%;
+
+  background-color: gray;
+  color : #0015C5;
+}
+.Lesson{
+  color : #0066FF;
+  text-align:left;
+  padding:10px;
+  margin:30px;
+  border: 5px solid black;
+  border-radius:20px;
+  width:93%;
+  margin-left:10px;
+  margin-right:auto;
+}
+.Lessontext{
+  color : #000000;
+  text-align:left;
+  padding:10px;
+  margin:30px;
+  border: 5px solid black;
+  border-radius:20px;
+  width:93%;
+  margin-left:10px;
+  margin-right:auto;
+}
+
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -box-sizing: border-box;
+}
+
+.example{
+  color : #009933;
+  padding:10px;
+  margin:10px;
+  border: 2px solid black;
+  border-radius:20px;
+  width:93%;
+  text-align:left;
+  margin-left:10px;
+  margin-right:auto;
+}
+.Importanttips{
+  color : #0066FF;
+  text-align:left;
+  text-transform: uppercase;
+  padding:10px;
+  margin:30px;
+  border: 5px solid blue;
+  border-radius:20px;
+  width:66%;
+  margin-left:10px;
+  margin-right:auto;
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/* CSS file for Stage 3 project */
+body {  /* setting for the body of the page, page width, font, margin, background color. */
+  padding: 20px 10px;
+  font-family: Arial;
+  max-width: 2000px;
+  margin: 0 auto; 
+  font-size: 100%;
+  background-color: black;
+}                
+
+h1 {  /* color for main title characters and center alignment */
+  text-align: center;
+  color: #0015C5;
+}
+
+p {  /* margin for p tag */
+  margin: 10px 0;
+}
+
+a {  /* default unvisited hyperlink color */
+  color : green;
+}
+
+a:visited {  /* visited hyperlink color... set same as unvisited color */
+  color : green;
+}
+
+
+.lessons {  /* formatting for Lessons titles and background  */
+  background-color: gray;
+  border-radius: 20px;
+  color: orange;
+  padding: 10px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.columns {   /* style setting for creating inline columns */
+  display : flex;
+}
+
+h2 {
+  margin: 10px;
+}
+
+h3 {
+  color: green;
+}
+.main-points-box {  /* Regular Formatting for Sub point text boxes within eacb lesson */
+  background-color: #3A3A3A;
+  padding: 4px;
+  margin: 10px auto;
+  border-radius: 4px;
+  color: white;
+  /*flex-grow: 1;
+  flex: 1;*/
+  width: 48%;
+  text-align: left;
+
+}
+.main-points-box:hover {  /* special formatting when hover mouse over sub point text box */
+  background-color: rgb(0,0,100);
+  padding: 4px;
+  margin: 10px auto;
+  border-radius: 4px;
+  color: white;
+  /*flex-grow: 1;
+  flex: 1;*/
+  width: 48%;
+  text-align: left;
+
+}
+
+.main-point-title {  /* Heading for individual text boxes */
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 8px;
+  text-align: center;
+  color: red;
+}
+
+.main-point-info {  /* formatting for text within text boxes */
+  font-weight: lighter;
+  margin: 6px;
+}
+
+.hipmunk {  /* formatting for image */
+  margin: 0 auto; 
+  width : 50px;
+
+}
+
+.code {  /* formatting for code examples */
+  background-color: yellow;
+  padding: 4px;
+  margin: 10px;
+  border-radius: 4px;
+  color: blue;
+  flex-grow: 1;
+  flex: 1;
+  width: 50%;
+  text-align: left;}
+
+.codestage5 {  /* formatting for code examples */
+  background-color: black;
+  padding: 4px;
+  margin: 10px;
+  border-radius: 4px;
+  color: white;
+  flex-grow: 1;
+  flex: 1;
+  text-align: left;}
+
+ol {
+  list-style-type: circle
+}
+
+ul {  /* formatting for unordered list */
+  list-style-type: none; 
+  margin: 0px;
+  padding:0;
+}
+
+textarea, input  {
+  background-color: white;
+  color: black;
+}
+
+.link {
+  font-size: x-large;
+  background-color: #3A3A3A;
+  padding: 4px;
+  margin: 10px auto;
+  border-radius: 4px;
+  color: white;
+  /*flex-grow: 1;
+  flex: 1;*/
+  width: auto
+  text-align: center;
+}
+
+.linkintext {
+  
+  color: white;
+
+
+}

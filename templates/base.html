@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<!-- this is the base page that the other pages will extend off of.  The links will stay at the top of each page.   -->
+
+<html>
+  	<head>
+    	<link rel="stylesheet" type="text/css" href="css/style4.css">
+    	<title>Intro to Programming</title>
+    	<meta charset="UTF-8">
+  	</head>
+
+	<div class="header">
+		<h1>
+		  	Introduction to Programming
+		</h1>
+	</div>
+
+	<body>
+<!-- Links  -->
+
+		<div class="columns">
+  			<a class="link" href="/">Home</a>
+  			<a class="link" href="/stage.html?stage=1&guestbook_name=stage_1">Stage 1</a>
+  			<a class="link" href="/stage.html?stage=2&guestbook_name=stage_2">Stage 2</a>
+  			<a class="link" href="/stage.html?stage=3&guestbook_name=stage_3">Stage 3</a>
+        <a class="link" href="/stage.html?stage=4&guestbook_name=stage_4">Stage 4</a>
+        <a class="link" href="/stage.html?stage=5&guestbook_name=stage_5">Stage 5</a>
+        <a class="link" href="/resume">Resume JavaScript Project</a>
+
+  	</div>
+
+      <br>
+     
+		{%block notes%}
+		{%endblock%}
+    <a name="comments"></a>
+
+
+	</body>
+
+</html>
