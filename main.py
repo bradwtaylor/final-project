@@ -4,7 +4,7 @@ import jinja2
 
 import webapp2
 import cgi
-from datetime import datetime
+from datetime import datetime, timedelta
 from pytz import timezone
 import urllib
 
@@ -41,25 +41,25 @@ class MainPage(Handler):
     def get(self):
         global error
         user = users.get_current_user()
- 
+
         guestbook_name = self.request.get('guestbook_name',
                                           HOME_GUESTBOOK_NAME)
-     
+
         greetings_query = Greeting.query(
             ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
-       
+
         url, url_linktext = url_link_sub(users.create_logout_url(self.request.uri + '#comments'),users.create_login_url(self.request.uri + '#comments'))
 
         sign_query_params = urllib.urlencode({'guestbook_name':
                                              guestbook_name})
         self.render("/stages/home.html", guestbook_name=guestbook_name, sign_query_params=sign_query_params, url=url, url_linktext=url_linktext, error=error)
-        
+
         greetings_query = Greeting.query(
             ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
         greetings = greetings_query.fetch()
         self.response.write('%s' % get_comments_sub(user, greetings))
         error = 'Enter comment here'
-        
+
 
 # stages is the handler for generating the pages with the individual stage content and the corresponding comments
 
@@ -73,19 +73,19 @@ class stages(Handler):
 
         greetings_query = Greeting.query(
             ancestor=stage_guestbook_key(stage_guestbook_name)).order(-Greeting.date)
-       
+
         url, url_linktext = url_link_sub(users.create_logout_url(self.request.uri + '#comments'),users.create_login_url(self.request.uri + '#comments'))
 
         # Write the submission form and the footer of the page
         sign_query_params = urllib.urlencode({'guestbook_name':
                                               stage_guestbook_name})
 
-        self.render("stages/stage.html", stage=stagenum, guestbook_name=stage_guestbook_name, sign_query_params=sign_query_params, url=url, 
+        self.render("stages/stage.html", stage=stagenum, guestbook_name=stage_guestbook_name, sign_query_params=sign_query_params, url=url,
             url_linktext=url_linktext, error=error)
         greetings = greetings_query.fetch()
         self.response.write('%s' % get_comments_sub(user, greetings))
         error = 'Enter comment here'
-        
+
 
 #url_link_sub checks if the current user is logged in or logged out in order to generate a "login" or "logout" link below the comments box
 def url_link_sub(logout_url,login_url):
@@ -107,6 +107,9 @@ def get_comments_sub(user, greetings):
             date = greeting.date
             dateutc = date.replace(tzinfo=timezone('US/Central'))
             localdate = dateutc.astimezone(timezone('US/Central'))
+            tz= timezone('US/Central')
+            time_difference=tz.utcoffset(localdate).total_seconds()
+            utc_time = localdate + timedelta(0,time_difference)
 
             if greeting.author:
                 author = greeting.author.email
@@ -115,9 +118,9 @@ def get_comments_sub(user, greetings):
                 comments = comments + ('<b>%s</b> wrote:' % author)
             else:
                 comments = comments + ('An anonymous person wrote:')
-            
-            comments = comments + ('<blockquote>%s<br>Date/Time: %s </blockquote><hr>' % 
-                (cgi.escape(greeting.content),localdate.strftime("%d-%b-%Y %I:%M:%S %p %Z")))
+
+            comments = comments + ('<blockquote>%s<br>Date/Time: %s </blockquote><hr>' %
+                (cgi.escape(greeting.content),utc_time.strftime("%d-%b-%Y %I:%M:%S %p %Z")))
 
         return comments
 
@@ -165,13 +168,13 @@ class Guestbook(webapp2.RequestHandler):
                     email=users.get_current_user().email())
 
         greeting.content = self.request.get('content')
-        
+
         if greeting.content.strip():
                 greeting.put()
                 error = 'Enter comment here'
         else:
-            error = 'Please provide a comment before hitting Submit!'      
-            
+            error = 'Please provide a comment before hitting Submit!'
+
         query_params = {'guestbook_name': guestbook_name}
         self.redirect('/?' + urllib.urlencode(query_params))
 
@@ -195,8 +198,8 @@ class Stage_Guestbook(webapp2.RequestHandler):
                 greeting.put()
                 error = 'Enter comment here'
         else:
-            error = 'Please provide a comment before hitting Submit!'      
-            
+            error = 'Please provide a comment before hitting Submit!'
+
         query_params = {'guestbook_name': stage_guestbook_name}
         self.redirect('/stage.html?' + urllib.urlencode(query_params) + '&stage=' + str(stagenum))
 
@@ -204,6 +207,6 @@ class resume(Handler):
     def get(self):
         self.render("resume/index.html")
 
-  
+
 app = webapp2.WSGIApplication ([('/', MainPage),('/stage.html', stages), ('/sign', Guestbook), ('/signstage', Stage_Guestbook),
     ('/resume', resume)], debug=True)
